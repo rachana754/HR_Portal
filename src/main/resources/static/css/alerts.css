@@ -1,0 +1,312 @@
+.alertHeading {
+    text-align: center;
+    margin-top: 25px;
+    width: 55%;
+}
+
+.myAlerts {
+    float: right;
+    width: 80%;
+}
+
+table {
+    width: 75%;
+    margin-top: 10px;
+    border-spacing: 0px;
+}
+
+.alertTable {
+    border-bottom: 2px solid black;
+    padding: 5px;
+    height: 50px;
+}
+
+th {
+    border-bottom: 2px solid black;
+    color: #d60431;
+    padding: 5px;
+    height: 50px;
+}
+
+tr {
+    height: 65px;
+}
+
+.button,
+button {
+    padding: 10px 35px;
+    cursor: pointer;
+    background-color: #e6e6e6;
+    color: black;
+    margin: 10px 0px;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.button:hover,
+button:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+td {
+    text-align: left;
+}
+
+.createButton {
+    padding: 10px;
+    margin-top: 1%;
+    width: 60%;
+}
+
+.create {
+    float: right;
+    background-color: #c62828;
+    color: white;
+}
+
+.zeroState {
+    font-size: 25px;
+    text-align: center;
+    width: 55%;
+    margin-top: 30px;
+}
+
+.accordion {
+    background-color: #d6d6d6;
+    color: black;
+    cursor: pointer;
+    padding: 15px;
+    width: 75%;
+    margin: 0px;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+    border: 1px solid black;
+    border-radius: 0px;
+    line-height: 10px;
+    height: 40px;
+}
+
+.active,
+.accordion:hover {
+    background-color: #aaaaaa;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+.accordion:after {
+    content: '\25BA';
+    color: black;
+    padding-right: 2px;
+    font-weight: bold;
+    float: left;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\25BC";
+}
+
+.homePage div.panel {
+    margin: 2px;
+    margin-left: 12.5%;
+    padding: 0px;
+    width: 74.9%;
+    text-align: left;
+    border: none;
+}
+
+
+/*
+.alerts div.panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 70px;
+    background-color: white;
+    overflow: hidden;
+    max-height: 70px;
+}
+
+.alerts .panel p {
+    width: 80%;
+    text-align: left;
+    line-height: 19px;
+} */
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.homePage div.panel p {
+    margin: 10px;
+}
+
+.homePage div.alertHeadingHome {
+    width: 73.3%;
+    margin: 4px;
+    height: 8px;
+    line-height: 5px;
+    padding: 15px;
+    margin-left: 12.5%;
+    vertical-align: middle;
+    color: white;
+    background-color: #444444;
+}
+
+.active+div.panel {
+    border: 1px solid black;
+    border-top: 0px;
+    max-height: 56px;
+    margin-top: 0px;
+}
+
+
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content */
+
+.modal-content {
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    height: 60%;
+}
+
+
+/* The Close Button */
+
+.close,
+.delete {
+    color: black;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.alertModalHeading {
+    color: #d60431;
+    text-align: center;
+    margin: 10px;
+    font-weight: normal;
+}
+
+.createAlertModal,
+.createAlertModal label,
+.createAlertModal input,
+textarea {
+    padding: 10px;
+    margin: 10px;
+}
+
+.createAlertModal label {
+    font-weight: bold;
+    padding: 0px;
+}
+
+.cancel,
+.cancel:hover {
+    margin: 10px;
+    float: left;
+}
+
+.createAlertModal input.save {
+    padding: 10px 35px;
+    float: right;
+    background-color: #c62828;
+    color: white;
+    font-size: 15px;
+}
+
+.alertModalButtons {
+    width: 77%;
+}
+
+.createAlertModal input {
+    border: 1px solid black;
+}
+
+textarea#createAlertArea {
+    border: 1px solid black;
+    font-family: arial;
+    font-size: 13px;
+    margin: 10px;
+    resize: none;
+}
+
+.alertSubject {
+    width: 62%;
+}
+
+.delete-modal-content {
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid black;
+    width: 30%;
+    height: 25%;
+    border-left: 75px solid red;
+}
+
+.yes {
+    padding: 10px 35px;
+    margin-left: 70px;
+    font-size: 15px;
+}
+
+.deleteAlertModal {
+    height: 100%;
+}
+
+.delText {
+    margin: 5% 0;
+    padding: 10px;
+}
+
+.warningSign {
+    position: fixed;
+    font-size: 50px;
+    float: left;
+    left: 33%;
+    top: 20%
+}

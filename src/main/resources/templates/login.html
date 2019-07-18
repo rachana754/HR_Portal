@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<head>
+<title>Empowered HR Portal</title>
+</head>
+<body>
+    <div class="main">
+        <form th:object="${loginFm}" action="#" class="loginForm">
+            <img src="imgs\logo2.png" alt="Empowered" />
+            <h1>HR PORTAL</h1>
+            <div class="loginForm-control">
+                <label for="username">Username:<a href="#">Forgot Username?</a></label> 
+                <input th:field="*{username}"
+                    id="username" type="text" name="username" value="Username" required="required"> 
+                    
+                <label for="password">Password:<a href="#">Forgot Password?</a></label> 
+                <input th:field="*{password}"
+                    id="password" type="password" name="password" value="********" required="required">
+
+                    <button class="loginForm-button">Log in</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

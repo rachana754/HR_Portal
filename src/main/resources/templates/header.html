@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<head>
+<title>Header</title>
+</head>
+<body th:fragment= "header">
+    <header class="header" >
+        <a th:href = "@{/home}"><img src="imgs/logo2.png" class="logo" alt="Empowered"></a>
+        <div class="profileIcon">
+                <img src="imgs/profile.png" class="profile" alt="Profile Icon">
+                <div class="dropdown-content">
+                    <a th:href = "@{/alertsManage}">Manage Portal</a>
+                    <a href="#">Logout</a>
+                </div>
+        </div>
+        <input type="text" placeholder="&#xF002; Search..." style="font-family:Arial, FontAwesome"  class="search" >
+    </header>
+    <nav class="menuBar">
+        <div class="navbar">
+            <div class="dropdown">
+                <button class="dropbtn">Employee Information 
+                 <i class="fa fa-caret-down displayNone"></i>
+                 </button>
+                <div class="dropdown-content">
+                    <a href="#">Benefits</a>
+                    <a href="#">Policies</a>
+                    <a href="#">Holiday Schedule</a>
+                    <a href="#">Forms</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Office Guide
+                 <i class="fa fa-caret-down displayNone"></i>
+                 </button>
+                <div class="dropdown-content">
+                    <a href="#">Building Safety</a>
+                    <a href="#">Office Map</a>
+                    <a href="#">Evacuation Map</a>
+                    <a href="#">Conference Rooms</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Office Activities
+                 <i class="fa fa-caret-down displayNone"></i>
+                 </button>
+                <div class="dropdown-content">
+                    <a href="#">EAW</a>
+                    <a href="#">Halloween</a>
+                    <a href="#">OktoberFest</a>
+                    <a href="#">Town Hall</a>
+                    <a href="#">Charitable Giving</a>
+                    <a href="#">D&D</a>
+                    <a href="#">Empowered To Learn</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Employee Directory
+                 <i class="fa fa-caret-down displayNone"></i>
+                 </button>
+                <div class="dropdown-content">
+                    <a href="#">Empowered</a>
+                    <a href="#">Contract</a>
+                    <a href="#">Interns</a>
+                    <a href="#">Organization Chart</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Performance/Development
+                 <i class="fa fa-caret-down displayNone"></i>
+                 </button>
+                <div class="dropdown-content">
+                    <a href="#">Framework</a>
+                    <a href="#">Annual Timelines</a>
+                    <a href="#">Resources</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Empowered To Be Well
+                 <i class="fa fa-caret-down displayNone"></i>
+                 </button>
+                <div class="dropdown-content">
+                    <a href="#">Flu Clinic</a>
+                    <a href="#">Heartful Meditation</a>
+                </div>
+            </div>
+            <div class="dropdown">              
+            <a href="#" class="dropbtn">Referral Policy</a>
+            </div>
+       </div>
+   </nav>
+</body>
+</html>

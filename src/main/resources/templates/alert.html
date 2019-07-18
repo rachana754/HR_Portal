@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<head>
+<title>Empowered HR Portal</title>
+</head>
+<body>
+    <div class="loginAlertBox" th:fragment="alert">
+        <div class="redBox">
+            <p class="content">&#9940</p>
+        </div>
+        <p class="content">
+            Sorry, we don't recognize your username/password.<br>Please try again.
+        </p>
+    </div>
+</body>
+</html>

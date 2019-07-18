@@ -1,0 +1,64 @@
+body {
+	height: 100vh;
+}
+
+.main {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
+.loginForm {
+	background-color: white;
+	border: 50px solid rgb(204, 10, 10);
+	width: 400px;
+	height: 400px;
+	margin: 1rem;
+	padding: 1rem 2rem;
+	display: flex;
+	flex-direction: column;
+	box-shadow: -6px 6px 9px 1px;
+}
+
+.loginForm img {
+	margin: auto;
+}
+
+.loginForm h1 {
+	text-align: center;
+	margin-top: initial;
+}
+
+.loginForm-control {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: auto;
+	margin-right: 50px;
+	margin-left: 50px;
+}
+
+.loginForm-control label {
+	font-weight: bold;
+}
+
+.loginForm-control input {
+	border-style: inset;
+	color: darkgrey;
+}
+
+.loginForm-control a {
+	font-size: 13px;
+	font-weight: normal;
+	float: right;
+}
+
+.loginForm-button {
+	width: 100%;
+	font-weight: bolder;
+	background-color: whitesmoke;
+	cursor: pointer;
+	box-shadow: 0px 4px 9px 1px grey;
+	border-color: darkgray;
+	border-style: outset;
+	margin-top: 10px;
+}
