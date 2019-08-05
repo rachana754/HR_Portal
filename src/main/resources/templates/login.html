@@ -4,24 +4,65 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 <head>
 <title>Empowered HR Portal</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 </head>
 <body>
+    <!-- Container for login form -->
     <div class="main">
-        <form th:object="${loginFm}" action="#" class="loginForm">
+    
+        <!-- Form for login Page -->
+        <form action="#" th:action="@{/login}" class="loginForm" name="loginForm" th:object="${loginForm}" method="post">
+            
+            <!-- display message if email was found upon forgot password modal-->
+            <p id="errorEmailMessage" class="errorEmail" th:if="${errorEmailMessage}" th:text="${errorEmailMessage}"></p>
+            <p id="successEmailMessage" class="successEmail" th:if="${successEmailMessage}" th:text="${successEmailMessage}"></p>
             <img src="imgs\logo2.png" alt="Empowered" />
             <h1>HR PORTAL</h1>
+            
+            <!-- container for form labels and submit button -->
             <div class="loginForm-control">
-                <label for="username">Username:<a href="#">Forgot Username?</a></label> 
-                <input th:field="*{username}"
-                    id="username" type="text" name="username" value="Username" required="required"> 
-                    
-                <label for="password">Password:<a href="#">Forgot Password?</a></label> 
-                <input th:field="*{password}"
-                    id="password" type="password" name="password" value="********" required="required">
-
-                    <button class="loginForm-button">Log in</button>
+            
+                <!-- tool-tip for forgot user name to display Span tag upon hover  -->
+                <label for="username">Username:
+                    <div class="tooltip">
+                        Forgot? <span class="tooltiptext">Username is the beginning of your Empowered email address</span>
+                    </div>
+                </label>
+                
+                <!--  username form field with front-end validation using Thymeleaf -->
+                <input id="username" type="text" name="username" th:field="*{username}">
+                <div class="validArrow" th:if="${#fields.hasErrors('username')}"></div>
+                <p class="validationLogin" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                
+                <!-- Label for password text box -->
+                <label for="password">Password: <!-- link for forgot password to display Forgot password modal upon click -->
+                    <a id="myBtn" class="loginForm-control-forgot">Forgot?</a>
+                </label> 
+                
+                <!-- password form field with front-end validation using Thymeleaf -->
+                <input id="password" type="password" name="password" th:field="*{password}">
+                <div class="validArrow" th:if="${#fields.hasErrors('password')}"></div>
+                <p class="validationLogin" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                <button type="submit" class="loginForm-button">Log in</button>
             </div>
         </form>
     </div>
+    
+    <!-- insert forgot password modal from forgotModal template-->
+    <div th:insert="forgotModal :: #myModal"></div>
 </body>
+
+<!--  Error Modal  -->
+<!-- error modal usage is not yet implemented -->
+<div id="alert" class="alertBox" th:fragment="*errorModal">
+    <div class="alertBox-content">
+        <div class="redBox">&#9940</div>
+        <p id="message">
+            Sorry, we don't recognize your username/password.<br>Please try again.
+        </p>
+        <button id="close" class="closeAlert">&#10006;</button>
+    </div>
+</div>
 </html>

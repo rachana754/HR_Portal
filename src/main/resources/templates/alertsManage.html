@@ -4,81 +4,77 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/alerts.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <head>
         <title>Alerts</title>
     </head>
-    <body>
-        <div th:replace = "header :: header"></div>
-        <div th:replace = "sideBarNavigation :: sideBar"></div>
+    <body th:with="checkAlertsNotNull=${alertsList!=null and !alertsList.empty},checkAlertsNull=${alertsList==null or alertsList.empty}">
+        <div th:replace="header :: header"></div>
+        <div th:replace="sideBarNavigation :: sideBar"></div>
         <main class="myAlerts">
-            <h1 class="alertHeading">Alerts</h1>
-            <p class="zeroState">No alerts so far.</p>
-            <table class="alertTable">
+            <div class="createButton" ><button class="button create" id="createAlertBtn">Create +</button></div>
+            <div th:replace="createAlertModal :: createAlertModal"></div>
+            <h1 class="alertHeading" th:if="${checkAlertsNotNull}">Alerts</h1>
+            <p class="zeroState" th:if="${checkAlertsNull}">No alerts so far.</p>
+            <p class="validationAlerts success" id="alertSuccess">Alert added successfully.</p>
+            <table class="alertTable" th:if="${checkAlertsNotNull}">
                 <tr>
                     <th>Subject</th>
                     <th>Manage</th>
                     <th></th>
                 </tr>
-                <tr>
-                    <td>Building is out of water</td>
-                    <td><a class="button" href='#'>Edit</a> </td>
-                    <td><a class="button" id="delAlertBtn" href='#'>Delete</a> </td>
-                </tr>
-                <tr>
-                    <td>Building is out of water</td>
-                    <td><a class="button" href='#'>Edit</a> </td>
-                    <td><a class="button" href='#'>Delete</a> </td>
-                </tr>
-                <tr>
-                    <td>Building is out of water</td>
-                    <td><a class="button" href='#'>Edit</a> </td>
-                    <td><a class="button" href='#'>Delete</a> </td>
+                <tr th:each="alert : ${alertsList}">
+                    <td th:text="${alert.subject}"></td>
+                    <td>
+                        <a class="button editAlertBtn" th:id="${alert.id}" th:href="@{'/editAlert/' + ${alert.id} }" >Edit</a>
+                        <!-- The Create Modal -->
+                        <div th:id="'modal' + ${alert.id}" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <h2 class="alertModalHeading" id ="alertModalHeading">Edit Alert</h2>
+                                <form class="createAlertModal" th:object="${alertsForm}" th:action="@{/saveAlert}" method="post" id="alertsForm">
+                                    <input type="hidden" th:value="${alert.id}" th:name="id">
+                                    <p class="validationAlerts" id="alertsError">Please fill all fields.</p>
+                                    <label for="subject" class="alertLabel">Subject:</label><br>
+                                    <input type="text" th:name="subject" class="alertSubject" id="alertSubject"  th:value="${alert.subject}">
+                                    <br>
+                                    <label for="description" class="alertLabel">Description:</label>
+                                    <br>
+                                    <input id="alertDescription" 
+                                        th:name="description"   maxlength="200" th:value="${alert.description}" >
+                                    <br>
+                                    <div class= "alertModalButtons">
+                                        <a class="button cancel" id="cancel" href='#'>Cancel</a>
+                                        <input type="submit" class="button save alertsSubmit" id="alertsSubmit" value="Save">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <a class="button delAlertBtn" th:id="${alert.id}">Delete</a>
+                        <!-- The Delete Modal -->
+                        <div th:id="'delete' + ${alert.id}" class="modal">
+                            <!-- Modal content -->
+                            <div class="delete-modal-content">
+                                <span class="delete">&times;</span>
+                                <p class="delText">Are you sure you want to delete Alert ?</p>
+                                <form class="deleteAlertModal" th:action="@{/deleteAlert}" method="post">
+                                    <input type="hidden" th:value="${alert.id}" th:name="id">
+                                    <span class="warningSign">&#9888;</span>
+                                    <div class= "alertModalButtons">
+                                        <a class="button cancel deleteNo" id="deleteNo" href='#'>No</a>
+                                        <input type="submit" class="button yes" value="Yes">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
             </table>
-            <!-- <div class="createButton" ><a class="button create" id="createAlertBtn" href='#'>Create +</a></div> -->
-            <div class="createButton" ><button onclick="createAlert()" class="button create" id="createAlertBtn">Create +</button></div>
-            <!-- The Create Modal -->
-            <div id="myModal" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h2 class="alertModalHeading">Add/Edit Alert</h2>
-                    <form class="createAlertModal" action="#">
-                        <label for="subject" class="alertLabel">Subject:</label><br>
-                        <input type="text" name="subject" class="alertSubject" value="The Building Is under Attack">
-                        <br>
-                        <label for="description" class="alertLabel">Description:</label>
-                        <br>
-                        <!--  <input type="text" name="description" class="alertDescription" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. "> -->
-                        <textarea id = "createAlertArea"
-                            name="description"  rows = "8"
-                            cols = "45" maxlength="200">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.</textarea>
-                        <br>
-                        <div class= "alertModalButtons">
-                            <a class="button cancel" id="cancel" href='#'>Cancel</a>
-                            <input type="submit" class="button save" value="Save">
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- The Delete Modal -->
-            <div id="delModal" class="modal">
-                <!-- Modal content -->
-                <div class="delete-modal-content">
-                    <span class="delete">&times;</span>
-                    <p class="delText">Are you sure you want to delete Alert ?</p>
-                    <form class="deleteAlertModal" action="#">
-                        <span class="warningSign">&#9888;</span>
-                        <div class= "alertModalButtons">
-                            <a class="button cancel" id="deleteNo" href='#'>No</a>
-                            <input type="submit" class="button yes" value="Yes">
-                        </div>
-                    </form>
-                </div>
-            </div>
         </main>
-        <div th:replace = "footer :: footer"></div>
-        <script src="/js/createAlert.js"></script>
-        <script src="/js/deleteAlertModal.js"></script>
+        <div th:replace="footer :: footer"></div>
+        <script type="text/javascript" th:src="@{/js/alertsManage.js}"></script>
     </body>
 </html>

@@ -1,0 +1,53 @@
+@charset "ISO-8859-1";
+
+.tellHR {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "Yu Gothic";
+    outline: none;
+    margin-left: 20%;
+    margin-top: 3%;
+    margin-bottom: 10%;
+}
+
+#headMessage {
+    font-size: 27px;
+    color: #c62828;
+}
+
+small {
+    font-size: 12px;
+}
+
+.subject {
+    outline: none;
+    border-radius: 6px 6px 6px 6px;
+    border-color: #FFFFFF;
+    border-width: medium 1px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+    background-color: #f0f0f0;
+}
+
+.box {
+    outline: none;
+    border-radius: 6px 6px 6px 6px;
+    border-color: #FFFFFF;
+    border-width: medium 1px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+    background-color: #f0f0f0;
+}
+
+#send {
+    box-shadow: 0 .5px .5px rgba(0, 0, 0, 0.08) inset;
+    border-radius: 6px;
+    background-color: #c62828;
+    color: white;
+}
+
+.errorMessage{
+    font-weight: bolder;
+    color: orangered;
+}

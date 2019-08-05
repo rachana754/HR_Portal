@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+</head>
+
+<!--  Forgot password modal -->
+<form action="#" th:action="@{/forgot}" id="myModal" class="modal" th:object="${forgotPassword}" th:fragment="*{forgotModal}"
+    method="post">
+    <div class="modal-content">
+        <button id="close" class="close">&#10006;</button>
+        <h2>Forgot password?</h2>
+        <p>To reset your password, please enter the username associated with your account. We'll send an email with
+            further instructions.</p>
+        <label for="username">Username: </label><br>
+        <p id="valMessage" class="validation"></p>
+        <div id="messageArrow" class="validArrow-down"></div>
+        <input id="username2" class="forgotBox-text" type="text" name="email" th:field="*{username2}" value="">
+        <input type="submit" id="frgtSubmit" class="forgotBox-submit" value="Send">
+    </div>
+</form>
+
+</html>

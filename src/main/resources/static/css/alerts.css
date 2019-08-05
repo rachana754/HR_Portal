@@ -90,7 +90,7 @@ td {
     height: 40px;
 }
 
-.active,
+.alerts .active,
 .accordion:hover {
     background-color: #aaaaaa;
     font-weight: bold;
@@ -106,7 +106,7 @@ td {
     margin-left: 5px;
 }
 
-.active:after {
+.alerts .active:after {
     content: "\25BC";
 }
 
@@ -118,24 +118,6 @@ td {
     text-align: left;
     border: none;
 }
-
-
-/*
-.alerts div.panel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0px 70px;
-    background-color: white;
-    overflow: hidden;
-    max-height: 70px;
-}
-
-.alerts .panel p {
-    width: 80%;
-    text-align: left;
-    line-height: 19px;
-} */
 
 .panel {
     padding: 0 18px;
@@ -266,7 +248,7 @@ textarea {
     border: 1px solid black;
 }
 
-textarea#createAlertArea {
+textarea#alertDescription {
     border: 1px solid black;
     font-family: arial;
     font-size: 13px;
@@ -309,4 +291,22 @@ textarea#createAlertArea {
     float: left;
     left: 33%;
     top: 20%
+}
+
+.validationAlerts {
+    margin: 10px;
+    padding: 2px;
+    text-align: center;
+    font-size: small;
+    color: red;
+    background-color: white;
+    border: 1px solid red;
+    height: 15px;
+    width: 80%;
+}
+
+.success {
+    color: green;
+    border: none;
+    float: left;
 }

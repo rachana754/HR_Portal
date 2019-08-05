@@ -1,0 +1,22 @@
+@charset "ISO-8859-1";
+
+.quicklinks {
+    float: left;
+    text-align: left;
+    line-height: 50px;
+}
+
+.link{
+    color: #1c1c1a;
+    font-family: "Yu Gothic";
+    text-decoration: none;
+    font-weight: 500;
+    font-size:23px;
+    display: inline-flex;
+    padding-top: 20px;
+    margin:0px 20px;
+}
+
+.link:hover{
+    font-weight: bold;
+}

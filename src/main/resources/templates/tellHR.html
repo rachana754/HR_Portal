@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" th:href="@{/css/tellHR.css}" />
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<body th:fragment="tellHR">
+    <div class="tellHR">
+        <p id=successMessage>Thank you, we have received your message</p>
+        <form th:object="${tellHR}" action="#" method="post" id="tellHR">
+            <h1 id="headMessage">We want to hear from you!</h1>
+            <p class=errorMessage id=errorMessage>Please fill in all fields</p>
+            <label for="subject" id="option">Subject</label>
+            <!-- drop down menu -->
+            <select class="subject" id="subject" th:field="*{subject}">
+                <option value="-1" hidden>Select</option>
+                <!-- hidden is to make sure that option won't appear in drop down menu -->
+                <option th:each="subject : ${allowedSubjects}" th:value="${subject}" th:text="${subject}"></option>
+            </select>
+
+
+            <p th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}"></p>
+            <br>
+            <textarea id="message" class="box" rows="10" cols="35" placeholder="Please enter a message"
+                th:field="*{message}"></textarea>
+            <p th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></p>
+            <br> <small> We'll receive your message at tellhr@empoweredbenefits.com </small> <br>
+            <button type="button" id="send">Send</button>
+        </form>
+    </div>
+    <script type="text/javascript" th:src="@{/js/tellHR.js}"></script>
+</body>
+</html>

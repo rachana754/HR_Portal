@@ -1,0 +1,386 @@
+/*
+forgot password modal
+*/
+.forgotBox-text {
+    width: 260px;
+    height: 30px;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    justify-content: center;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 407px;
+    /*height: 242px;*/
+    box-shadow: -6px 6px 9px 1px;
+    animation-name: animatetop;
+    animation-duration: 0.5s
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+}
+
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@
+keyframes animatetop {
+    from {top: -300px;
+    opacity: 0
+}
+
+to {
+    top: 0;
+    opacity: 1
+}
+
+}
+/*
+alert box styling
+*/
+.alertBox {
+    display: none;
+    justify-content: center;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    top: 0;
+    left: 0;
+    padding-top: 115px;
+    width: 100%;
+    height: 100%;
+}
+
+.alertBox-content {
+    display: flex;
+    justify-content: center-left;
+    font-size: 13px;
+    font-weight: bold;
+    z-index: 1;
+    width: 407px;
+    height: 106px;
+    /*border: 2px solid black;*/
+    box-shadow: 0px 6px 9px 1px;
+    background-color: white;
+}
+
+.alertBox-content p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1%;
+}
+
+.redBox {
+    width: 44px;
+    /*border: 1px solid black;
+    border-right: 2px solid black;
+    background-color: red;*/
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.closeAlert {
+    color: #aaaaaa;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    height: fit-content;
+    margin-left: 40px;
+    cursor: pointer;
+}
+/*
+login tool-tip
+*/
+.tooltip {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: normal;
+    color: -webkit-link;
+    float: right;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 423px;
+    background-color: grey;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+/*Header Navigation styles */
+input:focus {
+    outline: none;
+}
+
+body {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    width: 100%;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+    border-radius: 0;
+    border-right: 1px solid white;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #444444;
+}
+
+.displayNone {
+    display: none;
+}
+
+.dropdown:hover .dropbtn .displayNone {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 170px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    border-bottom: 1px solid black;
+}
+
+.dropdown-content a:hover {
+    background-color: #444444;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.logo, .profile {
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 30px;
+}
+
+.logo {
+    height: 30px;
+    width: 300px;
+}
+
+.profile {
+    height: 40px;
+    width: 40px;
+}
+
+.header .search {
+    float: right;
+    padding: 8px;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+}
+
+.search {
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+footer {
+    clear: both;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    margin: 10px 0px 0px 0px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 70px;
+    line-height: 70px;
+}
+
+.medialinks {
+    float: right;
+    padding: 8px 20px;
+    margin-right: 50px;
+}
+
+.medialinks a {
+    padding-right: 10px;
+}
+
+.profileIcon {
+    float: right;
+    margin-right: 30px;
+}
+
+.profileIcon:hover .dropdown-content {
+    display: block;
+}
+
+::placeholder {
+    color: #c0c0c0;
+}
+
+
+/* Side Bar Navigation Styles */
+
+#menu {
+    background-color: #d6d6d6;
+    color: white;
+    float: left;
+    width: 15%;
+    height: 800px;
+    border-right: 1px solid black
+}
+
+#menu a {
+    text-decoration: none;
+    font-size: 18px;
+    padding-right: 5px;
+    color: black;
+}
+
+#menu li {
+    list-style: none;
+    padding: 20px;
+    border-bottom: 2px solid black;
+}
+
+#menu li:hover,
+#menu li:active {
+    background-color: #69696930
+}
+
+.sideCaret {
+    font-size: 25px;
+    color: black;
+    float: right;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Home Page Alignment CSS */
+
+.homePage {
+    text-align: center;
+}
+
+.announce {
+    border: 1px solid black;
+    width: 100%;
+    height: 200px;
+}
+
+.alerts {
+    width: 100%;
+    height: 150px;
+}
+
+.homePage div.quickLinks {
+    float: left;
+    width: 20%;
+    height: 40vh;
+    margin-left: 20%;
+    margin-top: 3%;
+    margin-bottom: 10%;
+}
+
+.homePage div.tellHr {
+    float: right;
+    height: 40vh;
+    width: 20%;
+    margin-right: 20%;
+    margin-top: 3%;
+    margin-bottom: 10%;
+}

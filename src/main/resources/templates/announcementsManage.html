@@ -1,14 +1,131 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/displayAnnouncements.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/alerts.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <head>
         <title>Announcements</title>
     </head>
-    <body>
-        <div th:replace = "header :: header"></div>
-        <div th:replace = "sideBarNavigation :: sideBar"></div>
-        <div th:replace = "footer :: footer"></div>
+    <body th:with="checkannouncementsManageNotNull=${announcementsList!=null and !announcementsList.empty},checknnouncementsManageNull=${announcementsList==null or announcementsList.empty}">
+        <div th:replace="header :: header"></div>
+        <div th:replace="sideBarNavigation :: sideBar"></div>
+        <main class="myAnnouncements">
+            <div class="createButton" ><button class="button create" id="createAnnouncementBtn">Create +</button></div>
+            <h1 class="announcementsHeading" th:if=${checkannouncementsManageNotNull}>Announcements</h1>
+            <p th:if="${announcementsList == null || announcementsList.empty}" class="zeroState">No announcements so far.</p>
+            <p class="validationannouncements success" id="announcementsSuccess">Announcement added successfully.</p>
+            <table th:if ="${announcementsList != null && !announcementsList.empty}" class="announcementTable">
+                <tr>
+                    <th>Subject</th>
+                    <th>Manage</th>
+                    <th></th>
+                </tr>
+                <tr th:each="announcement : ${announcementsList}">
+                    <td th:text="${announcement.subject}"></td>
+                    <td><a class="button" id ="editAnnouncementBtn" href='#'>Edit</a> </td>
+                    <td><a class="button" id="delAnnouncementBtn" href='#'>Delete</a> </td>
+                </tr>
+            </table>
+            <!-- The Create Modal -->
+            <div id="createAnnouncementModal" class="modal">
+                <!-- Modal content -->
+                <div class="announcementModal-content">
+                    <span class="close">&times;</span>
+                    <!-- The ID is link to the create modal to give it a dynamic look when the user add/edit the announcement  -->
+                    <h2 class="announcementModalHeading"><span id="announcementModalHeading"></span> Announcement</h2>
+                    <form th:object="${announcementForm}" class="createAnnouncementModal" th:action="@{/announcementsManage}" method="post" id="announcementForm">
+                    <p class="validationAnnouncements" id="announcementsError">Please fill all fields.</p>
+                        <label for="subject" class="announcementLabel">Subject:</label><br>
+                        <input  type="text" id="subject" class="announcementSubject" th:field="*{subject}">
+                        <br>
+                        <label for="description" class="announcementLabel">Description:</label>
+                        <br>
+                        <textarea id="createAnnouncementArea"
+                            name="description"  rows="8"
+                            cols="45" maxlength="400" th:field="*{description}">What happens when you pair transformative technology with human empathy? You get solutions that work the way people do. Empowered human-focused approach to software began nearly two decades ago. Today, were expanding our horizons to create smarter, simpler solutions within more industries craving a better way to get things done.</textarea>
+                        <br>
+                        <div class="dropdownannouncement">
+                            <label for="Background color" id="option">Background Color</label>
+                            <!-- drop down menu -->
+                            <select class="AnnouncementColor" id="announcementColor"  th:field="*{selectedColor}">
+                                <option value="-1" hidden=>Select</option>
+                                <option th:each="color : ${T(com.ei.enums.AnnouncementColor).values()}" th:value="${color}" 
+                                    th:text="${color.getDescription()}"></option>
+                            </select>
+                        </div>
+                        <br>
+                        <br>
+                        <label for="urlLink" class="announcementLabel">URL Link:</label><br>
+                        <input  type="text" name="urlLink" class="announcementSubject" value="www.google.com" th:field="*{link}">
+                        <br>
+                        <div class= "announcementModalButtons">
+                            <a class="button cancel" id="Modalcancel" href='#'>Cancel</a>
+                            <input type="submit" class="button save" id="announcementsSubmit" value="Save">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- The Edit Modal -->
+            <div id="editAnnouncementModal" class="modal" >
+            <!-- The Edit Modal Content -->
+            <div class ="edit-announcementModal-content">
+            <span class="close">&times;</span>
+                    <!-- The ID is link to the create modal to give it a dynamic look when the user add/edit the announcement  -->
+                    <h2 class="announcementModalHeading"><span id="announcementModalHeading"></span> Announcement</h2>
+                   <form class="createAnnouncementModal" action="#">
+                        <label for="subject" class="announcementLabel">Subject:</label><br>
+                        <input  type="text" id="subject" class="announcementSubject" value="Welcome to Empowered">
+                        <br>
+                        <label for="description" class="announcementLabel">Description:</label>
+                        <br>
+                        <textarea id="editAnnouncementArea"
+                            name="description"  rows="8"
+                            cols="45" maxlength="400">What happens when you pair transformative technology with human empathy? You get solutions that work the way people do. Empowered human-focused approach to software began nearly two decades ago. Today, were expanding our horizons to create smarter, simpler solutions within more industries craving a better way to get things done.</textarea>
+                        <br>
+                        <div class="dropdownannouncement">
+                            <label for="Background color" id="option">Background Color</label>
+                            <!-- drop down menu -->
+                            <select class="AnnouncementColor" id="announcementColor" >
+                                <option value="-1" hidden=>Select</option>
+                <option value="PURPLE">Purple</option>
+                <option value="ORANGE">Orange</option>
+                <option value="BlUE">Blue</option>
+                <option value="WHITE">White</option>
+            </select>
+                        </div>
+                        <br>
+                        <br>
+                        <label for="urlLink" class="announcementLabel">URL Link:</label><br>
+                        <input  type="text" name="urlLink" class="announcementSubject" value="www.google.com">
+                        <br>
+                       
+                        <div class= "announcementModalButtons">
+                            <a class="button cancel" id="Modalcancel" href='#'>Cancel</a>
+                            <input type="submit" class="button save" value="Save">
+                        </div>
+            </form>
+            </div>
+            </div>
+            <!-- The Delete Modal -->
+            <div id="deleteAnnouncementModal" class="modal">
+                <!-- Modal content -->
+                <div class="delete-announcementModal-content">
+                    <span class="delete">&times;</span>
+                    <p class="delText">Are you sure you want to delete Announcement ?</p>
+                    <form class="deleteAnnouncementModal" action="#">
+                        <span class="warningSign">&#9888;</span>
+                        <div class= "announcementModalButtons">
+                            <a class="Modalcancel" id="deleteNo" href='#'>No</a>
+                            <input type="submit" class="button yes" value="Yes">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <div th:replace="footer :: footer"></div>
+        <script type="text/javascript" th:src="@{/js/announcementsManage.js}"></script>
     </body>
 </html>

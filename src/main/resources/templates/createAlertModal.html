@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <div id="createAlertModal" class="modal" th:fragment="createAlertModal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="alertModalHeading" id ="alertModalHeading">Add Alert</h2>
+            <form class="createAlertModal" th:object="${alertsForm}" th:action="@{/saveAlert}" method="post" id="alertsForm">
+                <p class="validationAlerts" id="alertsError">Please fill all fields.</p>
+                <label for="subject" class="alertLabel">Subject:</label><br>
+                <input type="text" th:name="subject" class="alertSubject" id="alertSubject" value="">
+                <br>
+                <label for="description" class="alertLabel">Description:</label>
+                <br>
+                <input id="alertDescription" 
+                    th:name="description"   maxlength="200" value="" >
+                <br>
+                <div class= "alertModalButtons">
+                    <a class="button cancel" id="cancel" href='#'>Cancel</a>
+                    <input type="submit" class="button save" id="alertsSubmit" value="Save">
+                </div>
+            </form>
+        </div>
+    </div>
