@@ -19,8 +19,6 @@ $(document).ready(function () {
     $("#createAlertBtn").click(function (event) {
         $(".validationAlerts").hide();
         $("#alertsError").hide();
-        $("#alertSubject").val("");
-        $("#alertDescription").val("");
         $("#createAlertModal").show();
     });
 

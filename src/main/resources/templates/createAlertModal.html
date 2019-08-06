@@ -5,8 +5,8 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2 class="alertModalHeading" id ="alertModalHeading">Add Alert</h2>
-            <form class="createAlertModal" th:object="${alertsForm}" th:action="@{/saveAlert}" method="post" id="alertsForm">
-                <p class="validationAlerts" id="alertsError">Please fill all fields.</p>
+            <form class="createAlertModal" th:object="${alertsForm}" th:action="@{/saveAlert}" method="post" id = "alertsForm">
+                <p class="validationAlerts" id = "alertsError">Please fill all fields.</p>
                 <label for="subject" class="alertLabel">Subject:</label><br>
                 <input type="text" th:name="subject" class="alertSubject" id="alertSubject" value="">
                 <br>

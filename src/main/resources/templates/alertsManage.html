@@ -27,7 +27,7 @@
                     <td th:text="${alert.subject}"></td>
                     <td>
                         <a class="button editAlertBtn" th:id="${alert.id}" th:href="@{'/editAlert/' + ${alert.id} }" >Edit</a>
-                        <!-- The Create Modal -->
+                        <!-- The Edit Modal -->
                         <div th:id="'modal' + ${alert.id}" class="modal">
                             <!-- Modal content -->
                             <div class="modal-content">
