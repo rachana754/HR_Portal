@@ -1,81 +1,58 @@
 $(document).ready(function () {
     var createAnnouncementModal = "#createAnnouncementModal";
-    $("#announcementsError").hide();
-    $("#announcementsSuccess").hide();
+    $(".validationAnnouncements").hide();
+    
+    
+    $(".save").click(function (event) {
+        var announcementId = event.target.id;
+        var subjectId = "#subject" + announcementId;
+        var subject = $(subjectId).val();
+        var descriptionId = "#description" + announcementId;
+        var description = $(descriptionId).val();
+        
+        //By default, The subject and description should not be empty.
+        var invalidSubject = (subject === undefined || subject === ""); 
+        var invalidDescription = (description === undefined || description === "");
+        
+        if (invalidSubject || invalidDescription) {
+            $(".validationAnnouncements").show();
+            event.preventDefault();
+        } else {
+            $(".validationAnnouncements").hide();
+        }
+    });
+    
     // Get the button that opens the modal
     //Clear the form and hide errors
     $("#createAnnouncementBtn").click(function () {
-        $(createAnnouncementModal).show();
         $("#announcementModalHeading").html("Add");
+        $(createAnnouncementModal).show();
     });
 
-
-    // Get the <span> element that closes the modal
-    $("span.close").click(function () {
-        $(createAnnouncementModal).hide();
-    });
-    // Get the button element that closes the modal   
-    $("#cancel").click(function () {
-        $(createAnnouncementModal).hide();
-    });
-
-    $("#announcementsSubmit").click(function (event) {
-        var subject = $("#announcementsSubject").val();
-        var description = $("#announcementsDescription").val();
-        var link = $("#announcementslink").val();
-        var selectedColor = $("#announcementsselectedColor").val();
-        var invalidSubject = (subject === undefined || subject === "");
-        var invalidDescription = (description === undefined || description === "");
-        var invalidlink =(link === undefined || link === "");
-        var invalidselectedColor = (selectedColor === undefined || selectedColor === "");
-        if (invalidSubject || invalidDescription) {
-            $("#announcementsError").show();
-            event.preventDefault();
-        }
-        else{
-            var destinationURL = "/announcementsManage";
-            var form = $("#createAnnouncementModal");
-            $("#announcementsSuccess").show();
-        }
-
-    });
-
+    var modalId; //Set modal id based on button click below
     
-    // Get the Edit Modal start
-    var editAnnouncementModal = "#editAnnouncementModal";
-    var deleteAlert = "deleteAnnouncementModal";
-    // Get the button that opens the modal
-    $("#editAnnouncementBtn").click(function () {
-        $(editAnnouncementModal).show();
+    // Get the edit button that opens the modal
+    $(".editAnnouncementBtn").click(function (event) {
+        var modal = "#modal" + event.target.id;
+        modalId = "#modal" + event.target.id;
+        $(modal).show();
+        event.preventDefault();    
     });
 
-    // Get the <span> element that closes the modal
-    $("span.close").click(function () {
-        $(editAnnouncementModal).hide();
-    });
-    // Get the Edit Modal end
-    
-    
     // Get the Delete modal
+    var modaldel;
     var deleteAnnouncementModal = "#deleteAnnouncementModal";
-    var deleteAlert = "deleteAnnouncementModal";
-    // Get the button that opens the modal
-    $("#delAnnouncementBtn").click(function () {
-        $(deleteAnnouncementModal).show();
-    });
+    var deleteAnnouncement = "deleteAnnouncementModal";
 
+    $(".delAnnouncementBtn").click(function (event) {
+        var modal = "#delete" + event.target.id;
+        modaldel = "#delete" + event.target.id;
+        $(modal).show();
+    });
+    
     // Get the <span> element that closes the modal
-    $("span.delete").click(function () {
-        $(deleteAnnouncementModal).hide();
-    });
-    // Get the button element that closes the modal   
-    $("#deleteNo").click(function () {
-        $(deleteAnnouncementModal).hide();
-    });
-    // When the user clicks anywhere outside of the modal, close it
-    $(window).click(function (e) {
-        if (e.target.id == deleteAlert) {
-            $(deleteAnnouncementModal).hide();
-        }
+    $("span.close").add(".cancel").click(function (e) {
+        $(modalId).hide();
+        $("#createAnnouncementModal").hide();
     });
 });

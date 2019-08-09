@@ -4,7 +4,6 @@ CREATE DATABASE IF NOT EXISTS `hr-portal`;
 USE `hr-portal`;
 
  
-
 -- Dumping structure for table hr-portal.profile
 DROP TABLE IF EXISTS `profile`;
 CREATE TABLE IF NOT EXISTS `profile` (
@@ -13,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `last_name` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE (`username`),
   UNIQUE (`email`)
@@ -34,17 +33,18 @@ CREATE TABLE IF NOT EXISTS `alert` (
 
 -- Announcement Table
 CREATE TABLE IF NOT EXISTS `announcement`(
-	`id` INT(10) NOT NULL AUTO_INCREMENT,
-	`subject` VARCHAR(80) NOT NULL,
-	`description` VARCHAR(500) NOT NULL,
-	`color` ENUM('PURPLE','ORANGE','BLUE','WHITE') NOT NULL,
-	`link` VARCHAR(100) NULL,
-	`is_active` BOOLEAN,
-	`create_date` DATETIME NOT NULL,
-	`last_modified_date` DATETIME NULL,
-	`delete_date` DATETIME NULL,
-	PRIMARY KEY (`id`)
+    `id` INT(10) NOT NULL AUTO_INCREMENT,
+    `subject` VARCHAR(80) NOT NULL,
+    `description` VARCHAR(500) NOT NULL,
+    `color` ENUM('PURPLE','ORANGE','BLUE','WHITE') NULL,
+    `link` VARCHAR(100) NULL,
+    `is_active` BOOLEAN NOT NULL,
+    `create_date` DATETIME NOT NULL,
+    `last_modified_date` DATETIME NULL,
+    `delete_date` DATETIME NULL,
+    PRIMARY KEY (`id`)
 );
+
 -- Add Config Specification Table
 CREATE TABLE config_specification(
     id INT(11) NOT NULL AUTO_INCREMENT,
@@ -54,6 +54,7 @@ CREATE TABLE config_specification(
     PRIMARY KEY (ID),
     UNIQUE (name)
 );
+
 
 -- Add message table
 CREATE TABLE IF NOT EXISTS message (

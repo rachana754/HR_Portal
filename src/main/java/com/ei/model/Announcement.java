@@ -33,12 +33,13 @@ public class Announcement implements Serializable {
 
     @Column(name = "description")
     private String description;
-
-    @Column(name = "color")
+    
+    // The purpose of this is default the color and to convert the ENUM into a string to pass to DAO
+    @Column(name = "color", nullable = true)
     @Enumerated(value = EnumType.STRING)
     private AnnouncementColor color;
 
-    @Column(name = "link")
+    @Column(name = "link", nullable = true)
     private String link;
 
     @Column(name = "is_active")

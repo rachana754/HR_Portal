@@ -29,6 +29,7 @@ public interface AlertDAO extends JpaRepository<Alert, Integer> {
      *            - user filled form is the parameter to be saved
      * @return returns the newly added alert if all parameters are supplied correctly else gives errors.
      */
+    @SuppressWarnings("unchecked")
     Alert save(Alert a);
 
     /**

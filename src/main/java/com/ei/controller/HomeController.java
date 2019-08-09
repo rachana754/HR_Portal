@@ -33,10 +33,10 @@ public class HomeController {
 
     @Autowired
     private AlertService alertService;
-    
+
     @Autowired
     private AnnouncementService announcementService;
-    
+
     @Autowired
     private MessageService messageService;
 
@@ -52,7 +52,6 @@ public class HomeController {
         ModelAndView mav = new ModelAndView("home");
         List<Alert> alertsList = alertService.getAllActiveAlerts(true);
         mav.addObject("alertsList", alertsList);
-        
         // Creating an announcement list
         List<Announcement> announcementsList = new ArrayList<>();
         // Add an item to the announcement list
@@ -62,11 +61,12 @@ public class HomeController {
         mav.addObject("displayTellHR", displayTellHR);
         
         if(displayTellHR) {
-            List<String> allowedSubjects = Arrays.asList(
+        List<String> allowedSubjects = Arrays.asList(
                     configService.findByName(ConfigNames.Home.TellHR.ALLOWED_SUBJECTS).getDefaultValue().split(","));
-            mav.addObject("allowedSubjects", allowedSubjects);
+        mav.addObject("allowedSubjects", allowedSubjects);
         }
         
+
         // Creating a list of all Announcement Colors
         List<AnnouncementColor> colorList = Arrays.asList(AnnouncementColor.values());
 
@@ -77,8 +77,9 @@ public class HomeController {
         mav.addObject("colorList", colorList);
 
         return mav;
+
     }
- 
+
     /**
      * Handles submission of the the TellHR form and sends the information to the backend
      */

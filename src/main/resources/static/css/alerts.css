@@ -90,7 +90,7 @@ td {
     height: 40px;
 }
 
-.alerts .active,
+.accordion.active,
 .accordion:hover {
     background-color: #aaaaaa;
     font-weight: bold;
@@ -106,7 +106,7 @@ td {
     margin-left: 5px;
 }
 
-.alerts .active:after {
+.accordion.active::after {
     content: "\25BC";
 }
 
@@ -141,13 +141,6 @@ td {
     vertical-align: middle;
     color: white;
     background-color: #444444;
-}
-
-.active+div.panel {
-    border: 1px solid black;
-    border-top: 0px;
-    max-height: 56px;
-    margin-top: 0px;
 }
 
 
@@ -257,7 +250,7 @@ textarea#alertDescription {
 }
 
 .alertSubject {
-    width: 62%;
+    width: 70%;
 }
 
 .delete-modal-content {
@@ -305,8 +298,13 @@ textarea#alertDescription {
     width: 80%;
 }
 
-.success {
-    color: green;
-    border: none;
-    float: left;
+textarea {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    font-family: arial;
+    font-size: 13px;
+    margin: 10px;
+    resize: none;
+    width: 70%;
 }

@@ -1,64 +1,46 @@
 $(document).ready(function () {
 
     $(".validationAlerts").hide();
-    $("#alertSuccess").hide();
-   
-    $("#alertsSubmit").click(function (event) {
-        var subject = $("#alertSubject").val();
-        var description = $("#alertDescription").val();
+
+    $(".save").click(function (event) {
+        var alertId = event.target.id;
+        var subjectId = "#subject" + alertId;
+        var subject = $(subjectId).val().trim();
+        var descriptionId = "#description" + alertId;
+        var description = $(descriptionId).val().trim();
         var invalidSubject = (subject === undefined || subject === "");
         var invalidDescription = (description === undefined || description === "");
-
         if (invalidSubject || invalidDescription) {
-            $("#alertsError").show();
+            $(".validationAlerts").show();
             event.preventDefault();
         }
     });
-
+    
     // Get the create button that opens the modal
-    $("#createAlertBtn").click(function (event) {
-        $(".validationAlerts").hide();
-        $("#alertsError").hide();
+    $("#createAlertBtn").click(function () {
         $("#createAlertModal").show();
     });
 
-    var modalId;
+    var modalId; // set modal id based on button click below
+    
     // Get the edit button that opens the modal
     $(".editAlertBtn").click(function (event) {
         var modal = "#modal" + event.target.id;
         modalId = "#modal" + event.target.id;
-        $(".validationAlerts").hide();
         $(modal).show();
         event.preventDefault();    
     });
-    // Get the <span> element that closes the modal
-    $("span.close").click(function (e) {
-        $(modalId).hide();
-        $("#createAlertModal").hide();
-    });
-    // Get the button element that closes the modal   
-    $(".cancel").click(function (e) {
-        $(modalId).hide();
-        $("#createAlertModal").hide();
-    });
-
-    // Get the Delete modal
-    var modaldel;
-    var deleteAlertModal = "#deleteAlertModal";
-    var deleteAlert = "deleteAlertModal";
-
+    
     $(".delAlertBtn").click(function (event) {
         var modal = "#delete" + event.target.id;
-        modaldel = "#delete" + event.target.id;
+        modalId = "#delete" + event.target.id;
         $(modal).show();
     });
-    // Get the <span> element that closes the modal
-    $("span.delete").click(function () {
-        $(modaldel).hide();
+    
+    // Get the button and <span> element that closes the modal
+    $("span.close").add(".cancel").click(function () {
+        $(modalId).hide();
+        $("#createAlertModal").hide();
     });
-    // Get the button element that closes the modal   
-    $(".deleteNo").click(function () {
-        $(modaldel).hide();
-    });
-
+    
 });

@@ -16,7 +16,7 @@
         <div class="homePage">
             <div th:replace=  "displayAnnouncements :: displayAnnouncements"></div>
             <div th:replace="alertsHomePage :: alertsHomePage"></div>
-            <!--  <div class="quickLinks" th:insert="quickLinks :: quickLinks"></div>-->
+            <div class="quickLinks" th:insert="quickLinks :: quickLinks"></div>
             <th:block th:if="${displayTellHR}">
                 <div  th:replace="tellHR :: tellHR"></div> <!-- tellHR fragment -->
             </th:block>

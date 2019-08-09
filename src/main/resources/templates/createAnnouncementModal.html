@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--  The Create Modal-->
+<div id="createAnnouncementModal" class="modal" th:fragment="createAnnouncementModal">
+    Modal content
+    <div class="announcementModal-content">
+        <span class="close">&times;</span>
+        <h2 class="announcementModalHeading">
+            <span id="announcementModalHeading"></span> Announcement
+        </h2>
+        <form th:object="${announcementForm}" class="createAnnouncementModal" th:action="@{/saveAnnouncement}"
+            method="post" id="announcementForm">
+            <p class="validationAnnouncements" >Subject and description are required.</p>
+            <label for="subject" class="announcementLabel">Subject:</label>
+            <br> 
+            <input type="text" id="subject" class="announcementSubject" th:field="*{subject}"> 
+            <br> 
+                
+            <label for="description" class="announcementLabel">Description:</label> 
+            <br>
+            <textarea id="description" name="description" rows="8" cols="45" maxlength="400"
+                th:field="*{description}"></textarea>
+            <br>
+            
+            <div class="dropdownannouncement">
+                <label for="Background color" id="option">Background Color</label> drop down menu <select
+                    class="AnnouncementColor" id="announcementColor" th:field="*{selectedColor}">
+                    <option value="-1" hidden=>Select</option>
+                    <option th:each="color : ${T(com.ei.enums.AnnouncementColor).values()}" th:value="${color}"
+                        th:text="${color.getDescription()}"></option>
+                </select>
+            </div>
+            
+            <br> <br> <label for="urlLink" class="announcementLabel">URL Link:</label><br> <input
+                type="text" name="urlLink" class="announcementSubject" value="www.google.com" th:field="*{link}">
+            <br>
+            
+            <div class="announcementModalButtons">
+                <a class="button cancel" id="Modalcancel" >Cancel</a> 
+                <input type="submit"
+                    class="button save" value="Save">
+            </div>
+        </form>
+    </div>
+</div>
+</html>

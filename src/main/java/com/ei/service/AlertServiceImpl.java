@@ -17,10 +17,10 @@ import com.ei.model.Alert;
 public class AlertServiceImpl implements AlertService {
 
     @Autowired
-    private AlertDAO AlertDAO;
+    private AlertDAO alertDAO;
 
     public List<Alert> getAllActiveAlerts(boolean isActive) {
-        return AlertDAO.findByIsActive(isActive);
+        return alertDAO.findByIsActive(isActive);
     }
 
     public Alert saveAlert(AlertForm a) {
@@ -40,11 +40,11 @@ public class AlertServiceImpl implements AlertService {
         alert.setSubject(a.getSubject());
         alert.setDescription(a.getDescription());
 
-        return AlertDAO.save(alert);
+        return alertDAO.save(alert);
     }
 
     public Alert findAlert(int id) {
-        return AlertDAO.findById(id);
+        return alertDAO.findById(id);
     }
 
     public boolean inActivateAlert(AlertForm a) {
@@ -53,7 +53,7 @@ public class AlertServiceImpl implements AlertService {
             alert.setActive(false);
             Date date = new Date();
             alert.setDeleteDate(date);
-            AlertDAO.save(alert);
+            alertDAO.save(alert);
             return true;
         }
         return false;

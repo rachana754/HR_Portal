@@ -25,4 +25,23 @@ public interface AnnouncementService {
      * @return returns the newly added Announcement if all parameters are supplied correctly else gives errors.
      */
     public Announcement saveAnnouncement(AnnouncementForm a);
+
+    /**
+     * Returns the Announcement with given id
+     * 
+     * @param id
+     *            - id of the Announcement to be found
+     * @return returns the Announcement with id found in database or null if not found
+     */
+    public Announcement findById(int id);
+
+    /**
+     * 
+     * @param a
+     *            - Announcement to be deleted
+     * @return returns true if Announcement is successfully made inactive or false if not. Here deletion is happening by making
+     *         them in active.
+     */
+    public boolean inActivateAnnouncement(AnnouncementForm a);
+    
 }
