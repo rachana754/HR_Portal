@@ -13,9 +13,8 @@ import com.ei.service.Hasher;
 import com.ei.service.ProfileService;
 
 /**
- * 
+ * Handles logic necessary for the Login page.
  * @author bstout
- *
  */
 @Component
 public class LoginControllerHelper {

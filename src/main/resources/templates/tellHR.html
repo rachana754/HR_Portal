@@ -20,7 +20,7 @@
 
             <p th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}"></p>
             <br>
-            <textarea id="message" class="box" rows="10" cols="35" placeholder="Please enter a message"
+            <textarea id="message" maxlength="500" class="box" rows="10" cols="35" placeholder="Please enter a message"
                 th:field="*{message}"></textarea>
             <p th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></p>
             <br> <small> We'll receive your message at tellhr@empoweredbenefits.com </small> <br>

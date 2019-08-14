@@ -20,33 +20,40 @@ public class AnnouncementServiceImpl implements AnnouncementService {
     @Autowired
     private AnnouncementDAO announcementDAO;
 
-    public List<Announcement> getAllActiveAnnouncements(boolean isActive) {
-        return announcementDAO.findByIsActive(isActive);
+    @Override
+    public Announcement findById(int id) {
+        return announcementDAO.findById(id);
+    }
+
+    public List<Announcement> getAllActiveAnnouncements() {
+        return announcementDAO.findByIsActive(true);
+    }
+
+    public List<Announcement> getAllInactiveAnnouncements() {
+        return announcementDAO.findByIsActive(false);
     }
 
     public Announcement saveAnnouncement(AnnouncementForm a) {
         Announcement announcement = new Announcement();
-        
+
         boolean isEdit = a.getId() != null;
-        
+
         // When editing (form has id), get the Announcement from DB as starting point
         if (isEdit) {
             announcement = this.findById(a.getId());
         }
-        
+
         announcement.setSubject(a.getSubject());
         announcement.setDescription(a.getDescription());
-        announcement.setLink(a.getLink());
-        
-        // Color is being selected
-        String color = a.getSelectedColor();
-        // if color is not selected set it to white by default otherwise the color has been selected
-        if (color != null && !color.equalsIgnoreCase("-1")) {
-            announcement.setColor(AnnouncementColor.valueOf(color));
-        } else {
-            announcement.setColor(AnnouncementColor.WHITE);
+        String link = a.getLink();
+
+        if (link != null && link != "" && link.length() != 0) {
+            link = link.startsWith("https://") ? link : "https://" + link;
         }
-        
+
+        announcement.setLink(link);
+        announcement.setColor(AnnouncementColor.valueOf(a.getSelectedColor()));
+
         Date date = new Date();
         if (isEdit) {
             // save updated announcement
@@ -59,11 +66,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         return announcementDAO.save(announcement);
     }
 
-    @Override
-    public Announcement findById(int id) {
-        return announcementDAO.findById(id);
-    }
-    
     public boolean inActivateAnnouncement(AnnouncementForm a) {
         Announcement announcement = this.findById(a.getId());
         if (announcement != null) {
@@ -75,5 +77,4 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         return false;
     }
 
-    
 }

@@ -11,7 +11,7 @@ public class AlertForm {
     @Nullable
     private Integer id;
 
-    @Size(min = 1, max = 30, message = "Please provide subject")
+    @Size(min = 1, max = 50, message = "Please provide subject")
     private String subject;
 
     @Size(min = 1, message = "Please provide description")

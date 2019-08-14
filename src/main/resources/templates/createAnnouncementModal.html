@@ -3,7 +3,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <!--  The Create Modal-->
 <div id="createAnnouncementModal" class="modal" th:fragment="createAnnouncementModal">
-    Modal content
     <div class="announcementModal-content">
         <span class="close">&times;</span>
         <h2 class="announcementModalHeading">
@@ -24,16 +23,18 @@
             <br>
             
             <div class="dropdownannouncement">
-                <label for="Background color" id="option">Background Color</label> drop down menu <select
+                <label for="Background color" id="option">Background Color:</label>
+                <select
                     class="AnnouncementColor" id="announcementColor" th:field="*{selectedColor}">
-                    <option value="-1" hidden=>Select</option>
                     <option th:each="color : ${T(com.ei.enums.AnnouncementColor).values()}" th:value="${color}"
                         th:text="${color.getDescription()}"></option>
                 </select>
             </div>
             
-            <br> <br> <label for="urlLink" class="announcementLabel">URL Link:</label><br> <input
-                type="text" name="urlLink" class="announcementSubject" value="www.google.com" th:field="*{link}">
+            <br>
+            <label for="urlLink" class="announcementLabel">URL Link:</label><br> <input
+                type="text" name="urlLink" class="announcementSubject" th:field="*{link}"
+                placeholder="Optional" > 
             <br>
             
             <div class="announcementModalButtons">

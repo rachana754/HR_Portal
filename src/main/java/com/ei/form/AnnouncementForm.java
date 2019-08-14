@@ -6,10 +6,11 @@ import org.springframework.lang.Nullable;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
-import com.ei.enums.AnnouncementColor;
+/**
+ * Used to process data to and from the controller and the HTML view 
+ * @author sjean-baptiste
+ */
 
 @Data
 public class AnnouncementForm {

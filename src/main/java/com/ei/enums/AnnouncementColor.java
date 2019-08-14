@@ -1,27 +1,22 @@
 package com.ei.enums;
 
+/**
+ * @author sjean-baptiste
+ */
+
 public enum AnnouncementColor {
-    
-    //Background color
-    PURPLE("Purple", "#75354D"),
-    ORANGE("Orange", "#F89C1C"),
-    BLUE("Blue", "#777D9B"),
-    WHITE("White", "#FFFFFF");
-   
+    PURPLE("Purple"),
+    ORANGE("Orange"),
+    BLUE("Blue");
+
     private String description;
-    private String htmlCode;
-    
-    private AnnouncementColor(String description, String htmlCode) {
+
+    private AnnouncementColor(String description) {
         this.description = description;
-        this.htmlCode = htmlCode;
     }
-    
+
     public String getDescription() {
         return description;
     }
-    
-    public String getHTMLCode() {
-        return htmlCode;
-    }
-    
+
 }

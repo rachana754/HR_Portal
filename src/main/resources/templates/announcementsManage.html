@@ -50,25 +50,23 @@
                              
                             <label th:for="'description' + ${announcement.id}" class="announcementLabel">Description:</label>
                             <br> 
-                            <textarea th:id="'description' + ${announcement.id}" th:name="description"  maxlength="500" th:text="${announcement.description}" ></textarea>
+                            <textarea th:id="'description' + ${announcement.id}" th:name="description"  maxlength="400" rows="8" cols="45" th:text="${announcement.description}" ></textarea>
                                     <br>
                             
                             <div class="dropdownannouncement">
-                                <label for="Background color" id="option">Background Color</label>
-                                <p>(Optional | Default: White)</p>
+                                <label for="Background color" id="option">Background Color:</label>
                                 <select
                                     class="AnnouncementColor" id="selectedColor" th:name="selectedColor" th:value="${selectedColor}">
-                                    <option value="-1" hidden=>Select</option>
                                     <option th:each="color : ${T(com.ei.enums.AnnouncementColor).values()}" 
                                         th:value="${color}" th:text="${color.getDescription()}"
                                         th:selected="${color == announcement.color}"></option>
                                 </select>
                             </div>
                             <br> 
-                            <label for="link" class="announcementLabel">URL Link:</label>
-                            <p>(Optional)</p>
+                            <label for="link" class="announcementLabel" >URL Link:</label>
                             <br> 
-                            <input type="text" id="link" th:name="link" class="announcementLink" th:value="${announcement.link}">   
+                            <input type="text" id="link" th:name="link" class="announcementLink" th:value="${announcement.link}"
+                                placeholder="Optional" >   
                              <br> 
                             <div class="announcementModalButtons">
                                 <a class="button cancel" id="Modalcancel" >Cancel</a> 
@@ -84,13 +82,13 @@
                 <div th:id="'delete' + ${announcement.id}" class="modal">
                     <!-- Modal content -->
                     <div class="delete-announcementModal-content">
-                        <span class="delete">&times;</span>
+                        <span class="close">&times;</span>
                         <p class="delText">Are you sure you want to delete Announcement ?</p>
                         <form class="deleteAnnouncementModal" th:action="@{/deleteAnnouncement}" method="post" >
                             <input type="hidden" th:value="${announcement.id}" th:name="id" >
                             <span class="warningSign">&#9888;</span>
                             <div class="announcementModalButtons">
-                                <a class="button cancel deleteNo" >No</a> 
+                                <a class="button cancel" >No</a> 
                                 <input type="submit" class="button yes" value="Yes">
                             </div>
                         </form>

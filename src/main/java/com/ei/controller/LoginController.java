@@ -20,9 +20,8 @@ import com.ei.form.LoginForm;
 import com.ei.service.ProfileService;
 
 /**
- * 
+ * Communicates with the Login page and handles sending information to and receiving information from the front end.
  * @author bstout
- *
  */
 @Controller
 public class LoginController {

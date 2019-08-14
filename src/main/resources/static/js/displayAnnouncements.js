@@ -1,90 +1,57 @@
 $(document).ready(function () {
-    /* This code will be replace with JQuery, Will comeback and fix this code, for now it is commented temporary*/
-    var slideIndex = document.getElementsByClassName("Annoucement-Slide")[0].id;
-    showSlides(slideIndex);
+    $("#slide0").show();
 
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
+    $(".color").each(function () {
+        var color = $(this).text();
+        var slideId = $(this).attr('id');
+        switch (color) {
+            case "PURPLE":
+                $('#slide' + slideId).addClass("purpleSlide");
+                break;
+            case "BLUE":
+                $('#slide' + slideId).addClass("blueSlide");
+                break;
+            case "ORANGE":
+                $('#slide' + slideId).addClass("orangeSlide");
+                break;
+        }
+    });
+    
+    var announcementLength = $(".announcement-slide").length;
+    var currentId = 0;
+
+    //nav to the left of slide and once it reach to the last slider it will go back to the first id
+    $(".prev").on("click", function () {
+        var prevId = parseInt(currentId) - 1;
+        if (prevId == -1) {
+            prevId = announcementLength - 1;
+        }
+        goToSlide(prevId);
+    });
+
+    //nav to the right of slide and once it reach to the last slider it will go back to the first id
+    $(".next").on("click", function () {
+        var nextId = parseInt(currentId) + 1;
+        if (nextId == announcementLength) {
+            nextId = 0;
+        }
+        goToSlide(nextId);
+    });
+
+    //nav dot will find the associate id
+    $(".dot").on("click", function (event) {
+        var dotId = event.target.id;
+        $("#" + dotId).addClass("active-dot");
+        
+        var desiredId = dotId.replace('dot','');
+        goToSlide(desiredId);
+    });
+
+    function goToSlide(desiredSlide) {
+        $("#slide" + currentId).hide();
+        $("#slide" + desiredSlide).show();
+        $("#dot" + currentId).removeClass("active-dot");
+        currentId = desiredSlide;
     }
-
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("Annoucement-Slide");
-        var dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {
-            slideIndex = 1
-        }
-        if (n < 1) {
-            slideIndex = slides.length
-        }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        //slideIndex++;
-        if (slideIndex > slides.length) {
-            slideIndex = 1
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-        setTimeout(showSlides, 10000);
-    }
-
-    /* FIX ME--Will come back and fix this code, for now it is commented temporary */
-    /* $('.next').on("click",function() {
-         var currentSlide = $('.active-slide');
-         var nextSlide = currentSlide.next();
-         
-         var currentDot = $('.active-dot');
-         var nextDot = currentDot.next();
-         
-         if ( nextSlide.length == 0 ) {
-             nextSlide = $('.Annoucement-Slide').first();
-             nextDot = $('.dot').first();
-         } 
-         
-         currentSlide.fadeOut(1300).removeClass('active-slide');
-         nextSlide.fadeIn(1300).addClass('active-slide');
-         
-         currentDot.removeClass('active-dot');
-         nextDot.addClass('active-dot');
-     });
-     $('.prev').on("click",function() {
-         var currentSlide = $('.active-slide');
-         var prevSlide = currentSlide.prev();
-         
-         var currentDot = $('.active-dot');
-         var prevDot = currentDot.prev();
-         
-         if ( prevSlide.length == 0 ) {
-             prevSlide = $('.Annoucement-Slide').last();
-             prevDot = $('.dot').last();
-         }
-         
-         currentSlide.fadeOut(1300).removeClass('active-slide');
-         prevSlide.fadeIn(1300).addClass('active-slide');
-         
-         currentDot.removeClass('dot');
-         prevDot.addClass('dot');
-     });
-     $(".Annoucement-Slide .dot").on("click",function(){
-         var index = $(this).index()
-         console.log(index)
-         var currentSlide = $('.active-slide');
-         var newSlide = currentSlide.parent().children().eq(index)
-             var currentDot = $(this);
-         currentDot.addClass('active-dot').siblings().removeClass('active-dot');
-
-         currentSlide.fadeOut(1300).removeClass('active-slide');
-         newSlide.fadeIn(1300).addClass('active-slide');
-         
-     
-     })*/
 
 });

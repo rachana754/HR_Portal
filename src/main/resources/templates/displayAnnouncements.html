@@ -1,53 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:fragment= "displayAnnouncements">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" th:href="@{/css/displayAnnouncements.css}" />
-<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<head>
-</head>
-<!-- When the list of announcement is empty it will show the zero state -->
-    <body  th:if="${announcementsList!=null and !announcementsList.empty}" >
-        <div class="DisplayAnnouncement-Container" id="Announcement-Slide" >
-            <div th:style="${announcementsList[0].color} != null ? 'background-color:#ff6347' : 'background-color:white'" >
-                <h3 th:text="${announcementsList[0].subject}"></h3>
-                <p th:text="${announcementsList[0].description}"></p>
-            </div>
-                <h3>Welcome to Empowered</h3>
-                <p>What happens when you pair transformative technology with human empathy? You get solutions that work the way people do. Empowered�s human-focused approach to software began nearly two decades ago. Today, we�re expanding our horizons to create smarter, simpler solutions within more industries craving a better way to get things done.</p>
-<body th:fragment="displayAnnouncements" th:if="${displayAnnouncementsList!=null and !displayAnnouncementsList.empty}">
-    <div class="DisplayAnnouncement-Container">
-        <div class="Annoucement-Slide Annoucement-Slide--01 " id="1">
-            <h3>Welcome to Empowered</h3>
-            <p>What happens when you pair transformative technology with human empathy? You get solutions that work
-            <!-- <div class="Announcement-Slide Announcement-Slide--02" id= "2">
-                <h3>emPerform-Quarterly Touchpoint starts June 15</h3>
-                the way people do. Empowered�s human-focused approach to software began nearly two decades ago. Today,
-                we�re expanding our horizons to create smarter, simpler solutions within more industries craving a
-                better way to get things done.</p>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/displayAnnouncements.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.7.min.js"></script>
+    <head>
+    </head>
+    <!-- When the list of announcement is empty it will show the zero state -->
+    <body>
+        <!-- Iterate announcement list and add nav dots -->
+        <div class="displayAnnouncement-container" th:if="${announcementsList!=null and !announcementsList.empty}" >
+            <th:block th:each="announcement, i : ${announcementsList}">
+                <div class="announcement-slide" th:id="'slide' + ${i.index}" >
+                    <h3 th:text="${announcement.subject}"></h3>
+                    <p th:text="${announcement.description}"></p>
+                    <a th:href="@{${announcement.link}}" th:target="_blank" th:text="${announcement.link}" class="externalLink"></a>
+                    <p class="color displayNone" th:id="${i.index}" th:text="${announcement.color}"></p>
+                    <a class="prev" th:id="${i.index}">&#10094;</a>
+                    <a class="next" th:id="${i.index}">&#10095;</a>
+                </div>
+            </th:block>
         </div>
-        <div class="Annoucement-Slide Annoucement-Slide--02" id="2">
-            <h3>emPerform-Quarterly Touchpoint starts June 15</h3>
-            <p>
-                Our first quarterly touchpoint under emPerform will commence on Saturday, June 15. The scheduled end
-                date is June 25. What do you have to do? You will receive an email from emPerform on Saturday informing
-                you that this window has opened. You will need to take the following steps: <a
-                    href="https://app5.crgroup.com/empoweredbenefits/login/login" target="_blank">Login here</a>
-            </p>
+        
+        <!-- Iterate announcement list and add nav dots -->
+        <div class="dots">
+            <th:block th:each="announcement, i : ${announcementsList}">
+                <span class="dot" th:id="'dot' + ${i.index}"></span>
+            </th:block>
         </div>
-            <div class="Announcement-Slide  Announcement-Slide--03" id ="3">
-            <h3>9th floor restrooms</h3>
-            <p>Hello Team, The 9th floor restrooms have reopened. Seat covers have not been restocked as they must
-                be ordered in a new size. Thank you for your patience during the remodel.</p>
-            </div> -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    <br>
-    <div style="text-align: center">
-        <span class="dot" onclick="currentSlide(1)"></span> <span class="dot" onclick="currentSlide(2)"></span> <span
-            class="dot" onclick="currentSlide(3)"></span>
-    </div>
     <script type="text/javascript" th:src="@{js/displayAnnouncements.js}"></script>
-</body>
+    </body>
 </html>

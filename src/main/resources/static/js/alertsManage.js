@@ -18,6 +18,9 @@ $(document).ready(function () {
     
     // Get the create button that opens the modal
     $("#createAlertBtn").click(function () {
+        $(".validationAlerts").hide();
+        $("#subject").val("");
+        $("#description").val("");
         $("#createAlertModal").show();
     });
 
@@ -27,6 +30,7 @@ $(document).ready(function () {
     $(".editAlertBtn").click(function (event) {
         var modal = "#modal" + event.target.id;
         modalId = "#modal" + event.target.id;
+        $(".validationAlerts").hide();
         $(modal).show();
         event.preventDefault();    
     });

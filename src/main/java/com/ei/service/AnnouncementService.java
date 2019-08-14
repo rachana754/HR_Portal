@@ -2,19 +2,38 @@ package com.ei.service;
 
 import java.util.List;
 
+/**
+ * Allows access to DAO methods for Announcements
+ * @author sjean-baptiste
+ */
+
 import com.ei.form.AnnouncementForm;
 import com.ei.model.Announcement;
 
 public interface AnnouncementService {
 
     /**
+     * Returns the Announcement with given id
+     * 
+     * @param id
+     *            - id of the Announcement to be found
+     * @return returns the Announcement with id found in database or null if not found
+     */
+    public Announcement findById(int id);
+
+    /**
      * Returns the Announcements by active state
      * 
-     * @param isActive
-     *            - true is for all active Announcements and false is for all inactive Announcements
-     * @return returns all active/inactive Announcement list if exists or empty list if none.
+     * @return returns all active Announcement list if exists or empty list if none.
      */
-    public List<Announcement> getAllActiveAnnouncements(boolean isActive);
+    public List<Announcement> getAllActiveAnnouncements();
+    
+    /**
+     * Returns the Announcements by inactive state
+     * 
+     * @return returns all inactive Announcement list if exists or empty list if none.
+     */
+    public List<Announcement> getAllInactiveAnnouncements();
     
 
     /**
@@ -26,14 +45,6 @@ public interface AnnouncementService {
      */
     public Announcement saveAnnouncement(AnnouncementForm a);
 
-    /**
-     * Returns the Announcement with given id
-     * 
-     * @param id
-     *            - id of the Announcement to be found
-     * @return returns the Announcement with id found in database or null if not found
-     */
-    public Announcement findById(int id);
 
     /**
      * 

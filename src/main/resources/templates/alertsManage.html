@@ -38,7 +38,7 @@
                                     <input type="hidden" th:value="${alert.id}" th:name="id" >
                                     <p class="validationAlerts" >Please fill all fields.</p>
                                     <label th:for="'subject' + ${alert.id}" class="alertLabel" >Subject:</label><br>
-                                    <input type="text" th:name="subject" class="alertSubject" th:id="'subject' + ${alert.id}"  th:value="${alert.subject}" >
+                                    <input type="text" th:name="subject" class="alertSubject" maxlength="50" th:id="'subject' + ${alert.id}"  th:value="${alert.subject}" >
                                     <br>
                                     <label th:for="'description' + ${alert.id}" class="alertLabel" >Description:</label>
                                     <br>

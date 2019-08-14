@@ -16,9 +16,14 @@ import com.ei.enums.AnnouncementColor;
 
 import lombok.Data;
 
+/**
+ * Java object mapping to the database table
+ * @author sjean-baptiste
+ */
+
 @Data
 @Entity
-@Table(name = "Announcement")
+@Table(name = "announcement")
 public class Announcement implements Serializable {
 
     private static final long serialVersionUID = 1L;

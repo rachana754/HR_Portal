@@ -22,8 +22,8 @@ CREATE TABLE IF NOT EXISTS `profile` (
 -- Alert Table
 CREATE TABLE IF NOT EXISTS `alert` (
     `id` int(10) NOT NULL AUTO_INCREMENT,
-    `subject` varchar(50) NOT NULL,
-    `description` varchar(100) NOT NULL,
+    `subject` varchar(80) NOT NULL,
+    `description` varchar(200) NOT NULL,
     `create_date` datetime NOT NULL,
     `last_modified_date` datetime,
     `is_active` bool NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `announcement`(
     `id` INT(10) NOT NULL AUTO_INCREMENT,
     `subject` VARCHAR(80) NOT NULL,
     `description` VARCHAR(500) NOT NULL,
-    `color` ENUM('PURPLE','ORANGE','BLUE','WHITE') NULL,
+    `color` ENUM('PURPLE','ORANGE','BLUE') NULL,
     `link` VARCHAR(100) NULL,
     `is_active` BOOLEAN NOT NULL,
     `create_date` DATETIME NOT NULL,

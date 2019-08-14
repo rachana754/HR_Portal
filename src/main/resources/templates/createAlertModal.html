@@ -8,7 +8,7 @@
             <form class="createAlertModal" th:object="${alertsForm}" th:action="@{/saveAlert}" method="post" id="alertsForm" >
                 <p class="validationAlerts alertsError" id="alertsError" >Please fill all fields.</p>
                 <label for="subject" class="alertLabel" >Subject:</label><br>
-                <input type="text" th:name="subject" class="alertSubject" id="subject" value="" >
+                <input type="text" th:name="subject" class="alertSubject" maxlength="50" id="subject" value="" >
                 <br>
                 <label for="description" class="alertLabel" >Description:</label>
                 <br>

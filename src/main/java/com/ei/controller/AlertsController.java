@@ -1,6 +1,5 @@
 package com.ei.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -16,6 +15,10 @@ import com.ei.form.AlertForm;
 import com.ei.model.Alert;
 import com.ei.service.AlertService;
 
+/**
+ * Communicates with the Alerts page and handles sending information to and receiving information from the front end.
+ * @author rrevuri
+ */
 @Controller
 public class AlertsController {
 
@@ -24,8 +27,7 @@ public class AlertsController {
 
     @GetMapping(value = "/alertsManage")
     public ModelAndView alerts(@ModelAttribute("alertsForm") AlertForm aForm) {
-        List<Alert> alertsList = new ArrayList<>();
-        alertsList = alertService.getAllActiveAlerts(true);
+        List<Alert> alertsList  = alertService.getAllActiveAlerts(true);
         ModelAndView mav = new ModelAndView("alertsManage");
         mav.addObject("alertsList", alertsList);
         return mav;
@@ -42,4 +44,5 @@ public class AlertsController {
         alertService.inActivateAlert(aForm);
         return "redirect:/alertsManage";
     }
+    
 }
