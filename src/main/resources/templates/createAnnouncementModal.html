@@ -13,12 +13,12 @@
             <p class="validationAnnouncements" >Subject and description are required.</p>
             <label for="subject" class="announcementLabel">Subject:</label>
             <br> 
-            <input type="text" id="subject" class="announcementSubject" th:field="*{subject}"> 
+            <input type="text" id="subject" class="announcementSubject" maxlength="80" th:field="*{subject}">
             <br> 
                 
             <label for="description" class="announcementLabel">Description:</label> 
             <br>
-            <textarea id="description" name="description" rows="8" cols="45" maxlength="400"
+            <textarea id="description" name="description" rows="8" cols="45" maxlength="500"
                 th:field="*{description}"></textarea>
             <br>
             

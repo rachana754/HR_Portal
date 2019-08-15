@@ -27,6 +27,9 @@ $(document).ready(function () {
     //Clear the form and hide errors
     $("#createAnnouncementBtn").click(function () {
         $("#announcementModalHeading").html("Add");
+        $(".validationAnnouncements").hide();
+        $("#subject").val("");
+        $("#description").val("");
         $(createAnnouncementModal).show();
     });
 
@@ -36,6 +39,7 @@ $(document).ready(function () {
     $(".editAnnouncementBtn").click(function (event) {
         var modal = "#modal" + event.target.id;
         modalId = "#modal" + event.target.id;
+        $(".validationAnnouncements").hide();
         $(modal).show();
         event.preventDefault();
     });

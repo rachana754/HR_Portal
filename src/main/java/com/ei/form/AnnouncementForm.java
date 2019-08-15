@@ -18,10 +18,10 @@ public class AnnouncementForm {
     @Nullable
     private Integer id;
 
-    @Size(min = 1, max = 50, message = "Please provide valid subject")
+    @Size(min = 1, max = 80, message = "Please provide valid subject")
     private String subject;
 
-    @Size(min = 1, max = 400, message = "Please provide valid description")
+    @Size(min = 1, max = 500, message = "Please provide valid description")
     private String description;
 
     private String link;

@@ -44,14 +44,14 @@
                             <p class="validationAnnouncements" >Subject and description are required.</p>
                             
                             <label th:for="'subject' + ${announcement.id}" class="announcementLabel">Subject:</label>
-                            <br> 
-                            <input type="text" th:id="'subject' + ${announcement.id}" th:name="subject" class="announcementSubject" th:value="${announcement.subject}">   
+                            <br>   
+                            <input type="text" th:name="subject" class="announcementSubject" maxlength="80" th:id="'subject' + ${announcement.id}" th:value="${announcement.subject}" >
                              <br> 
                              
                             <label th:for="'description' + ${announcement.id}" class="announcementLabel">Description:</label>
                             <br> 
-                            <textarea th:id="'description' + ${announcement.id}" th:name="description"  maxlength="400" rows="8" cols="45" th:text="${announcement.description}" ></textarea>
-                                    <br>
+                            <textarea th:id="'description' + ${announcement.id}" th:name="description"  maxlength="500" rows="8" cols="45" th:text="${announcement.description}" ></textarea>
+                             <br>
                             
                             <div class="dropdownannouncement">
                                 <label for="Background color" id="option">Background Color:</label>
